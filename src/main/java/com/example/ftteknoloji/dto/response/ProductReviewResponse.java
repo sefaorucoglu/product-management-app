@@ -10,7 +10,7 @@ import java.util.Date;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindProductReviewResponse {
+public class ProductReviewResponse {
     private Long id;
     private String review;
     private Date date;

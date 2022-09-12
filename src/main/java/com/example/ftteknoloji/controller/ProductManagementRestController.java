@@ -1,19 +1,21 @@
 package com.example.ftteknoloji.controller;
 
-import com.example.ftteknoloji.dto.request.FindProductRequest;
-import com.example.ftteknoloji.dto.request.FindProductReviewRequest;
-import com.example.ftteknoloji.dto.response.FindProductResponse;
-import com.example.ftteknoloji.dto.response.FindProductReviewResponse;
-import com.example.ftteknoloji.entity.ProductReview;
+import com.example.ftteknoloji.dto.request.ProductRequest;
+import com.example.ftteknoloji.dto.request.ProductReviewRequest;
+import com.example.ftteknoloji.dto.request.UserRequest;
+import com.example.ftteknoloji.dto.response.ProductResponse;
+import com.example.ftteknoloji.dto.response.ProductReviewResponse;
+import com.example.ftteknoloji.dto.response.UserResponse;
 import com.example.ftteknoloji.exception.ProductNotFoundException;
 import com.example.ftteknoloji.exception.ProductReviewNotFoundException;
 import com.example.ftteknoloji.service.ProductManagementService;
+import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.annotation.RequestScope;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RequestScope
 @RestController
@@ -26,44 +28,56 @@ public class ProductManagementRestController {
         this.productManagementService = productManagementService;
     }
 
-    @PostMapping("/getProductReviews")
-    public List<FindProductReviewResponse> findProductReviewByProductId (@PathVariable Long id){
+    @GetMapping("/getProductReviews")
+    public List<ProductReviewResponse> findProductReviewByProductId (@PathVariable Long id){
         if (id.equals("")){
             throw new ProductReviewNotFoundException("Inputs can not be empty!");
         }
 return productManagementService.findProductReviewByProductId(id);
     }
-    @PostMapping("/getProductReviewsByProductId")
-    public List<FindProductReviewResponse> findProductReviewByDateRangeAndProductId (@RequestBody FindProductReviewRequest request){
-        if (request.getProductId().equals("") &&request.getDate().equals("")){
+    @GetMapping("/getProductReviewsByProductId")
+    public List<ProductReviewResponse> findProductReviewByDateRangeAndProductId (@RequestBody ProductReviewRequest request){
+        if (request.getProductId().equals("") &&request.getDates().isEmpty()==true){
             throw new ProductReviewNotFoundException("Inputs can not be empty!");
         }
         return productManagementService.findProductReviewByDateRangeAndProductId(request);
     }
-    @PostMapping("/getProductReviews/{id}")
-    public List<FindProductReviewResponse> findProductReviewByUserId (@PathVariable Long id){
+    @GetMapping("/getProductReviews/{id}")
+    public List<ProductReviewResponse> findProductReviewByUserId (@PathVariable Long id){
         if (id.equals("")){
             throw new ProductReviewNotFoundException("ID can not be empty");
         }
         return productManagementService.findProductReviewByUserId(id);
     }
-    @PostMapping("/getProductReviewsByUserId")
-    public List<FindProductReviewResponse> findProductReviewByDateRangeAndUserId (@RequestBody FindProductReviewRequest request){
-        if (request.getUserId().equals("") &&request.getDate().equals("")){
+    @GetMapping("/getProductReviewsByUserId")
+    public List<ProductReviewResponse> findProductReviewByDateRangeAndUserId (@RequestBody ProductReviewRequest request){
+        if (request.getUserId().equals("") &&request.getDates().isEmpty()==true){
             throw new ProductReviewNotFoundException("Inputs can not be empty!");
         }
         return productManagementService.findProductReviewByDateRangeAndUserId(request);
     }
-    @PostMapping("/getExpiredProducts")
-    public List<FindProductResponse> findProductByExpirationAfter (@RequestBody  FindProductRequest request){
+    @GetMapping("/getExpiredProducts")
+    public List<ProductResponse> findProductByExpirationAfter (@RequestBody  ProductRequest request){
         if (request.getExpirationDate().equals("")){
             throw new ProductNotFoundException("Expiration date can not be empty!");
         }
         return productManagementService.findProductByExpirationAfter(request);
     }
-    @PostMapping("/getProducts")
-    public List<FindProductResponse> findProducts (@RequestBody FindProductRequest request){
+    @GetMapping("/getProducts")
+    public List<ProductResponse> findProducts (@RequestBody ProductRequest request){
         return productManagementService.findProduct(request);
+    }
+    @PostMapping(value = "/addCustomer",produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<UserResponse> createCustomer(@RequestBody UserRequest request){
+        return productManagementService.createUser(request);
+    }
+    @PostMapping(value = "/addProduct",produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<ProductResponse> createProduct(@RequestBody ProductRequest request){
+        return productManagementService.createProduct(request);
+    }
+    @PostMapping(value = "/addProductReview",produces = MediaType.APPLICATION_JSON_VALUE ,consumes = MediaType.APPLICATION_JSON_VALUE)
+    public Optional<ProductReviewResponse> createProductReview (@RequestBody ProductReviewRequest request){
+        return productManagementService.createProductReview(request);
     }
 
 
