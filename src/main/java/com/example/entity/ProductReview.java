@@ -1,7 +1,16 @@
-package com.example.ftteknoloji.entity;
+package com.example.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class ProductReview {
     @Id
@@ -11,8 +20,8 @@ public class ProductReview {
     private Date date;
     @ManyToOne
     @JoinColumn(name = "PRODUCT_ID")
-    private Product productId;
+    private Product product;
     @ManyToOne
     @JoinColumn(name = "USER_ID")
-    private User userId;
+    private User user;
 }

@@ -1,4 +1,4 @@
-package com.example.ftteknoloji.dto.response;
+package com.example.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class FindProductResponse {
+public class ProductResponse {
     private Long id;
     private String name;
 }

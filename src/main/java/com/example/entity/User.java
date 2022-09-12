@@ -1,10 +1,18 @@
-package com.example.ftteknoloji.entity;
+package com.example.entity;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
     @Id
     private Long id;
@@ -18,6 +26,6 @@ public class User {
     private String phone;
     @OneToMany
     @JoinTable(name="REVIEW_ID")
-    private List<ProductReview> reviewId;
+    private List<ProductReview> review;
 
 }
