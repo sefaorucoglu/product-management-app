@@ -1,4 +1,4 @@
-package com.example.ftteknoloji.dto.request;
+package com.example.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -6,16 +6,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Date;
-import java.util.List;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductReviewRequest {
+public class ProductReviewResponse {
     private Long id;
-    private Long userId;
-    private Long productId;
     private String review;
-    private List<Date> dates;
+    private Date date;
+    private Long ProductId;
+    private Long userId;
 }

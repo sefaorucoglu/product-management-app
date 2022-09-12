@@ -1,4 +1,4 @@
-package com.example.ftteknoloji.entity;
+package com.example.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

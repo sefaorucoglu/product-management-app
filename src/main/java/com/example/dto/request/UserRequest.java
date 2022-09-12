@@ -1,4 +1,4 @@
-package com.example.ftteknoloji.dto.request;
+package com.example.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

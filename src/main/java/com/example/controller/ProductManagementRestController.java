@@ -1,14 +1,14 @@
-package com.example.ftteknoloji.controller;
+package com.example.controller;
 
-import com.example.ftteknoloji.dto.request.ProductRequest;
-import com.example.ftteknoloji.dto.request.ProductReviewRequest;
-import com.example.ftteknoloji.dto.request.UserRequest;
-import com.example.ftteknoloji.dto.response.ProductResponse;
-import com.example.ftteknoloji.dto.response.ProductReviewResponse;
-import com.example.ftteknoloji.dto.response.UserResponse;
-import com.example.ftteknoloji.exception.ProductNotFoundException;
-import com.example.ftteknoloji.exception.ProductReviewNotFoundException;
-import com.example.ftteknoloji.service.ProductManagementService;
+import com.example.dto.request.ProductRequest;
+import com.example.dto.request.ProductReviewRequest;
+import com.example.dto.request.UserRequest;
+import com.example.exception.ProductNotFoundException;
+import com.example.exception.ProductReviewNotFoundException;
+import com.example.dto.response.ProductResponse;
+import com.example.dto.response.ProductReviewResponse;
+import com.example.dto.response.UserResponse;
+import com.example.service.ProductManagementService;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -57,7 +57,7 @@ return productManagementService.findProductReviewByProductId(id);
         return productManagementService.findProductReviewByDateRangeAndUserId(request);
     }
     @GetMapping("/getExpiredProducts")
-    public List<ProductResponse> findProductByExpirationAfter (@RequestBody  ProductRequest request){
+    public List<ProductResponse> findProductByExpirationAfter (@RequestBody ProductRequest request){
         if (request.getExpirationDate().equals("")){
             throw new ProductNotFoundException("Expiration date can not be empty!");
         }

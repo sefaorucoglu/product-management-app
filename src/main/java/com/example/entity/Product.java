@@ -1,10 +1,9 @@
-package com.example.ftteknoloji.entity;
+package com.example.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 import java.util.Date;

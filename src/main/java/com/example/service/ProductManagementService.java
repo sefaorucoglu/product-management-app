@@ -1,11 +1,11 @@
-package com.example.ftteknoloji.service;
+package com.example.service;
 
-import com.example.ftteknoloji.dto.request.ProductRequest;
-import com.example.ftteknoloji.dto.request.ProductReviewRequest;
-import com.example.ftteknoloji.dto.request.UserRequest;
-import com.example.ftteknoloji.dto.response.ProductResponse;
-import com.example.ftteknoloji.dto.response.ProductReviewResponse;
-import com.example.ftteknoloji.dto.response.UserResponse;
+import com.example.dto.request.ProductRequest;
+import com.example.dto.request.ProductReviewRequest;
+import com.example.dto.request.UserRequest;
+import com.example.dto.response.ProductResponse;
+import com.example.dto.response.ProductReviewResponse;
+import com.example.dto.response.UserResponse;
 
 import java.util.List;
 import java.util.Optional;

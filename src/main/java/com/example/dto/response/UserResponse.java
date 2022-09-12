@@ -1,4 +1,4 @@
-package com.example.ftteknoloji.dto.response;
+package com.example.dto.response;
 
 public class UserResponse {
     private Long id;
