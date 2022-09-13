@@ -11,4 +11,6 @@ public interface ProductReviewRepository
         extends JpaRepository<ProductReview,Long> {
     List<ProductReview> findProductReviewsByDateBetweenAndProductId(Date date ,Date date2, Long productId);
     List<ProductReview> findProductReviewsByUserIdAndDateBetween (Long userId , Date date ,Date date2);
+    List<ProductReview> findProductReviewByProductId(Long id);
+    List<ProductReview> findProductReviewByUserId(Long id);
 }
