@@ -28,12 +28,12 @@ public class ProductManagementRestController {
         this.productManagementService = productManagementService;
     }
 
-    @GetMapping("/getProductReviews")
-    public List<ProductReviewResponse> findProductReviewByProductId (@PathVariable Long id){
-        if (id.equals("")){
+    @GetMapping("/getProductReviews/{id}")
+    public List<ProductReviewResponse> findProductReviewByProductId (@RequestParam ProductReviewRequest request){
+        if (request.getProductId().equals("")){
             throw new ProductReviewNotFoundException("Inputs can not be empty!");
         }
-return productManagementService.findProductReviewByProductId(id);
+return productManagementService.findProductReviewByProductId(request.getProductId());
     }
     @GetMapping("/getProductReviewsByProductId")
     public List<ProductReviewResponse> findProductReviewByDateRangeAndProductId (@RequestBody ProductReviewRequest request){
