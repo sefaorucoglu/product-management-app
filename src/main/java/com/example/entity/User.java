@@ -25,8 +25,7 @@ public class User {
     private String email;
     @Column(length = 15)
     private String phone;
-    @OneToMany
-    @JoinTable(name="REVIEW_ID")
+    @OneToMany(mappedBy ="user",targetEntity = ProductReview.class)
     private List<ProductReview> review;
 
 }

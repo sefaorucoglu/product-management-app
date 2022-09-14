@@ -21,7 +21,6 @@ public class Product {
     private Double price;
     @Column(nullable = true)
     private Date expirationDate;
-    @OneToMany
-    @JoinTable(name="REVIEW_ID")
+    @OneToMany(mappedBy ="product",targetEntity = ProductReview.class)
     private List<ProductReview> review;
 }
