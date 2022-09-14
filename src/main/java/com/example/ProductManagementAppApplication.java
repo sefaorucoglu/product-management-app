@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.entity.User;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

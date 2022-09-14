@@ -2,11 +2,11 @@ package com.example.service;
 
 import com.example.dto.request.ProductRequest;
 import com.example.dto.request.ProductReviewRequest;
+import com.example.dto.request.ReviewAddRequest;
 import com.example.dto.request.UserRequest;
 import com.example.dto.response.ProductResponse;
 import com.example.dto.response.ProductReviewResponse;
 import com.example.dto.response.UserResponse;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +22,7 @@ public interface ProductManagementService {
 
     Optional<UserResponse> createUser (UserRequest request);
     Optional<ProductResponse> createProduct (ProductRequest request);
-    Optional<ProductReviewResponse> createProductReview (ProductReviewRequest request);
+    Optional<ProductReviewResponse> createProductReview (ReviewAddRequest request);
 
 
 }
