@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
@@ -37,6 +38,7 @@ public class ProductManagementServiceImp implements ProductManagementService {
             () -> new ProductNotFoundException("Product Not Found");
     private static final Supplier<ProductReviewNotFoundException> productReviewNotFoundExceptionSupplier =
             () -> new ProductReviewNotFoundException("Product Review Not Found!");
+
     private final ProductRepository productRepository;
     private final ProductReviewRepository productReviewRepository;
     private final UserRepository userRepository;
@@ -145,7 +147,19 @@ public class ProductManagementServiceImp implements ProductManagementService {
 
     @Override
     public Optional<ProductReviewResponse> createProductReview(ReviewAddRequest request) {
-        ProductReview productReview = modelMapper.map(request, ProductReview.class);
-        return Optional.of(modelMapper.map(productReviewRepository.save(productReview), ProductReviewResponse.class));
+        var date = new Date();
+        var user =userRepository.findById(request.getUserId()).orElseThrow(()-> new IllegalArgumentException("User not found"));
+        var product =productRepository.findById(request.getProductId()).orElseThrow( productNotFoundExceptionSupplier);
+        var productReview = new ProductReview();
+        productReview.setProduct(product);
+        productReview.setUser(user);
+        productReview.setDate(date);
+        productReview.setReview(request.getReview());
+       var savedProductReview= productReviewRepository.save(productReview);
+        var productReviewResponse=modelMapper.map(savedProductReview,ProductReviewResponse.class);
+
+      //  ProductReview productReview = modelMapper.map(request, ProductReview.class);
+       // return Optional.of(modelMapper.map(productReviewRepository.save(productReview), ProductReviewResponse.class));
+        return Optional.of(productReviewResponse);
     }
 }
