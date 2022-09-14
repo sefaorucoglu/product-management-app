@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.data.auditing.CurrentDateTimeProvider;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -13,8 +14,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ProductRequest {
-    private Long id;
     private String name;
+    @Nullable
     private Double price;
     private Date expirationDate;
 }

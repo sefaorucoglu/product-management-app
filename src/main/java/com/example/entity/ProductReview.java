@@ -14,6 +14,7 @@ import java.util.Date;
 @Entity
 public class ProductReview {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @Column(length = 500)
     private String review;

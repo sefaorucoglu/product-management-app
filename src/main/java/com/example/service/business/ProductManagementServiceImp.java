@@ -2,6 +2,7 @@ package com.example.service.business;
 
 import com.example.dto.request.ProductRequest;
 import com.example.dto.request.ProductReviewRequest;
+import com.example.dto.request.ReviewAddRequest;
 import com.example.dto.request.UserRequest;
 import com.example.dto.response.ProductResponse;
 import com.example.dto.response.ProductReviewResponse;
@@ -143,7 +144,7 @@ public class ProductManagementServiceImp implements ProductManagementService {
     }
 
     @Override
-    public Optional<ProductReviewResponse> createProductReview(ProductReviewRequest request) {
+    public Optional<ProductReviewResponse> createProductReview(ReviewAddRequest request) {
         ProductReview productReview = modelMapper.map(request, ProductReview.class);
         return Optional.of(modelMapper.map(productReviewRepository.save(productReview), ProductReviewResponse.class));
     }
