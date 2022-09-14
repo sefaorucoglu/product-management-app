@@ -17,5 +17,6 @@ import java.util.Date;
 public class ReviewAddRequest {
     private String review;
     private Date date = new Date();
-
+    private Product product;
+    private User user;
 }
